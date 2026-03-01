@@ -1,0 +1,277 @@
+{
+  "config": {
+    "base_url": "http://127.0.0.1:8015",
+    "requests": 8,
+    "with_rerolls": true,
+    "format": "any",
+    "length": "any",
+    "session_prefix": "post-curation-v3",
+    "seed": 7
+  },
+  "summary": {
+    "total_requests": 16,
+    "successful_requests": 16,
+    "failed_requests": 0,
+    "success_rate": 1.0,
+    "latency_ms": {
+      "p50": 12012.66,
+      "p90": 13522.9,
+      "p95": 13522.9,
+      "avg": 12076.02
+    },
+    "diversity": {
+      "unique_titles": 10,
+      "total_titles": 16,
+      "unique_ratio": 0.625,
+      "top_titles": [
+        [
+          "The Apartment",
+          5
+        ],
+        [
+          "When Harry Met Sally...",
+          2
+        ],
+        [
+          "Lost in Translation",
+          2
+        ],
+        [
+          "The Shawshank Redemption",
+          1
+        ],
+        [
+          "Spirited Away",
+          1
+        ],
+        [
+          "Harold and Maude",
+          1
+        ],
+        [
+          "Annie Hall",
+          1
+        ],
+        [
+          "Moonrise Kingdom",
+          1
+        ],
+        [
+          "Love, Simon",
+          1
+        ],
+        [
+          "La La Land",
+          1
+        ]
+      ]
+    },
+    "year_stats": {
+      "min": 1960,
+      "median": 1989,
+      "max": 2018,
+      "before_1960_count": 0,
+      "before_1960_ratio": 0.0
+    },
+    "reroll": {
+      "evaluated_pairs": 8,
+      "changed_title_pairs": 8,
+      "change_rate": 1.0
+    },
+    "errors": []
+  },
+  "records": [
+    {
+      "pair_id": 0,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 11033.67,
+      "session_id": "post-curation-v3-0",
+      "request_id": "67077a5c-6024-4c42-8f4d-39a0001fd841",
+      "prompt": "I want a positive tone without being cheesy",
+      "title": "The Shawshank Redemption",
+      "year": 1994,
+      "error": null
+    },
+    {
+      "pair_id": 0,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 12012.66,
+      "session_id": "post-curation-v3-0",
+      "request_id": "b045d340-544f-4b61-8e97-44e99f4b83ef",
+      "prompt": "I want a positive tone without being cheesy",
+      "title": "Spirited Away",
+      "year": 2001,
+      "error": null
+    },
+    {
+      "pair_id": 1,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 10777.37,
+      "session_id": "post-curation-v3-0",
+      "request_id": "443dbe0c-fb95-46e2-830a-5ad71fa240be",
+      "prompt": "Give me a cozy but smart recommendation",
+      "title": "Harold and Maude",
+      "year": 1971,
+      "error": null
+    },
+    {
+      "pair_id": 1,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 11227.72,
+      "session_id": "post-curation-v3-0",
+      "request_id": "f8b358d2-8c49-4d4c-a577-2bb085d3b6f6",
+      "prompt": "Give me a cozy but smart recommendation",
+      "title": "Annie Hall",
+      "year": 1977,
+      "error": null
+    },
+    {
+      "pair_id": 2,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 11470.2,
+      "session_id": "post-curation-v3-1",
+      "request_id": "0ac3ce05-99bd-4072-a66a-785f234dfb0a",
+      "prompt": "Give me something charming and not too heavy",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 2,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 10788.27,
+      "session_id": "post-curation-v3-1",
+      "request_id": "dd40a4b9-b41e-4365-828c-0d558e1cd221",
+      "prompt": "Give me something charming and not too heavy",
+      "title": "When Harry Met Sally...",
+      "year": 1989,
+      "error": null
+    },
+    {
+      "pair_id": 3,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 11121.99,
+      "session_id": "post-curation-v3-1",
+      "request_id": "2d4194d3-0ff1-4a65-9d22-6e4b20241fc1",
+      "prompt": "Low-stress vibe with heart and good pacing",
+      "title": "Moonrise Kingdom",
+      "year": 2012,
+      "error": null
+    },
+    {
+      "pair_id": 3,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 13094.32,
+      "session_id": "post-curation-v3-1",
+      "request_id": "265b604c-bef1-4b11-bad7-265e82b3eb2c",
+      "prompt": "Low-stress vibe with heart and good pacing",
+      "title": "Lost in Translation",
+      "year": 2003,
+      "error": null
+    },
+    {
+      "pair_id": 4,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 13522.9,
+      "session_id": "post-curation-v3-2",
+      "request_id": "f11dc275-8028-4865-853e-a984a7ddf010",
+      "prompt": "I need a comfort watch with high rewatch value",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 4,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 12842.02,
+      "session_id": "post-curation-v3-2",
+      "request_id": "82046146-2b22-45e7-833b-92c222ce822e",
+      "prompt": "I need a comfort watch with high rewatch value",
+      "title": "When Harry Met Sally...",
+      "year": 1989,
+      "error": null
+    },
+    {
+      "pair_id": 5,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 11181.08,
+      "session_id": "post-curation-v3-2",
+      "request_id": "a65aa24c-ddd8-41cc-9879-31bff201cce6",
+      "prompt": "A high-quality vibe watch, no stress",
+      "title": "Lost in Translation",
+      "year": 2003,
+      "error": null
+    },
+    {
+      "pair_id": 5,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 12982.75,
+      "session_id": "post-curation-v3-2",
+      "request_id": "8822593d-10b5-4b41-b6a2-f43487f439f7",
+      "prompt": "A high-quality vibe watch, no stress",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 6,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 12622.48,
+      "session_id": "post-curation-v3-3",
+      "request_id": "47044510-3c0e-4295-bdab-7d96c3544ab8",
+      "prompt": "I want a feel-good pick that is not childish",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 6,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 13075.59,
+      "session_id": "post-curation-v3-3",
+      "request_id": "8484d32c-2245-465a-a643-d034e46267d5",
+      "prompt": "I want a feel-good pick that is not childish",
+      "title": "Love, Simon",
+      "year": 2018,
+      "error": null
+    },
+    {
+      "pair_id": 7,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 13917.93,
+      "session_id": "post-curation-v3-3",
+      "request_id": "92d55f0f-b762-48ce-93fa-1f9ddb01f616",
+      "prompt": "I need a movie that leaves me in a better mood",
+      "title": "La La Land",
+      "year": 2016,
+      "error": null
+    },
+    {
+      "pair_id": 7,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 11545.36,
+      "session_id": "post-curation-v3-3",
+      "request_id": "0748eadb-8f19-481e-9308-6fcb70dddec4",
+      "prompt": "I need a movie that leaves me in a better mood",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    }
+  ]
+}

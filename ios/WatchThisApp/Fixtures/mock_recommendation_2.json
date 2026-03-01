@@ -1,0 +1,30 @@
+{
+  "request_id": "mock-2",
+  "recommendation": {
+    "tmdb_id": 27205,
+    "media_type": "movie",
+    "title": "Inception",
+    "year": 2010,
+    "poster_url": "https://image.tmdb.org/t/p/w780/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
+    "genres": ["Action", "Science Fiction", "Adventure"],
+    "overview": "A high-concept thriller that rewards attention without losing momentum.",
+    "vote_average": 8.37,
+    "vote_count": 36000,
+    "runtime": 148,
+    "keywords": ["mind-bending", "thriller", "twist"],
+    "top_cast": ["Leonardo DiCaprio", "Joseph Gordon-Levitt"],
+    "imdb_id": "tt1375666"
+  },
+  "pitch": "If your vibe is sharp and intense, this is a clean hit. It is clever, stylish, and consistently engaging.",
+  "confidence": 0.9,
+  "reasoning": "High mood-fit for cerebral thriller input with top-tier audience ratings",
+  "streaming_sources": [
+    {
+      "source_id": "157",
+      "name": "Max",
+      "type": "sub",
+      "web_url": "https://www.max.com",
+      "format": "HD"
+    }
+  ]
+}

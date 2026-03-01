@@ -1,0 +1,30 @@
+{
+  "request_id": "mock-3",
+  "recommendation": {
+    "tmdb_id": 2316,
+    "media_type": "tv",
+    "title": "The Office",
+    "year": 2005,
+    "poster_url": "https://image.tmdb.org/t/p/w780/qWnJzyZhyy74gjpSjIXWmuk0ifX.jpg",
+    "genres": ["Comedy"],
+    "overview": "Low-stakes comedy with endless rerun energy.",
+    "vote_average": 8.59,
+    "vote_count": 4600,
+    "runtime": 22,
+    "keywords": ["comfort", "funny", "background"],
+    "top_cast": ["Steve Carell", "John Krasinski"],
+    "imdb_id": "tt0386676"
+  },
+  "pitch": "This is the social comfort pick: familiar, funny, and easy to throw on immediately. Perfect when you want zero pressure and instant mood lift.",
+  "confidence": 0.86,
+  "reasoning": "Strong comfort-comedy alignment and repeat-watch value",
+  "streaming_sources": [
+    {
+      "source_id": "387",
+      "name": "Peacock",
+      "type": "sub",
+      "web_url": "https://www.peacocktv.com",
+      "format": "HD"
+    }
+  ]
+}

@@ -1,0 +1,317 @@
+{
+  "config": {
+    "base_url": "http://127.0.0.1:8013",
+    "requests": 10,
+    "with_rerolls": true,
+    "format": "any",
+    "length": "any",
+    "session_prefix": "post-curation",
+    "seed": 7
+  },
+  "summary": {
+    "total_requests": 20,
+    "successful_requests": 20,
+    "failed_requests": 0,
+    "success_rate": 1.0,
+    "latency_ms": {
+      "p50": 11186.72,
+      "p90": 12729.07,
+      "p95": 12774.53,
+      "avg": 11658.77
+    },
+    "diversity": {
+      "unique_titles": 8,
+      "total_titles": 20,
+      "unique_ratio": 0.4,
+      "top_titles": [
+        [
+          "The Apartment",
+          8
+        ],
+        [
+          "Moonrise Kingdom",
+          4
+        ],
+        [
+          "Breakfast at Tiffany's",
+          2
+        ],
+        [
+          "Love, Simon",
+          2
+        ],
+        [
+          "The Shawshank Redemption",
+          1
+        ],
+        [
+          "Inception",
+          1
+        ],
+        [
+          "Lost in Translation",
+          1
+        ],
+        [
+          "Forrest Gump",
+          1
+        ]
+      ]
+    },
+    "year_stats": {
+      "min": 1960,
+      "median": 1977,
+      "max": 2018,
+      "before_1960_count": 0,
+      "before_1960_ratio": 0.0
+    },
+    "reroll": {
+      "evaluated_pairs": 10,
+      "changed_title_pairs": 10,
+      "change_rate": 1.0
+    },
+    "errors": []
+  },
+  "records": [
+    {
+      "pair_id": 0,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 10817.65,
+      "session_id": "post-curation-0",
+      "request_id": "5c062013-bc5d-4dbc-802e-a431404097eb",
+      "prompt": "I want a positive tone without being cheesy",
+      "title": "The Shawshank Redemption",
+      "year": 1994,
+      "error": null
+    },
+    {
+      "pair_id": 0,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 12383.35,
+      "session_id": "post-curation-0",
+      "request_id": "5d814171-c260-401e-aa5d-4c1460fd6625",
+      "prompt": "I want a positive tone without being cheesy",
+      "title": "Inception",
+      "year": 2010,
+      "error": null
+    },
+    {
+      "pair_id": 1,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 14817.17,
+      "session_id": "post-curation-0",
+      "request_id": "be208520-c678-44d2-8a1e-a6e258861f87",
+      "prompt": "Give me a cozy but smart recommendation",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 1,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 11072.11,
+      "session_id": "post-curation-0",
+      "request_id": "aa5723e0-b305-43f9-ad31-e26f0c0e25c5",
+      "prompt": "Give me a cozy but smart recommendation",
+      "title": "Lost in Translation",
+      "year": 2003,
+      "error": null
+    },
+    {
+      "pair_id": 2,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 10626.8,
+      "session_id": "post-curation-1",
+      "request_id": "3ad2674e-b2c3-4e83-8722-68f9301e07b2",
+      "prompt": "Give me something charming and not too heavy",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 2,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 11080.46,
+      "session_id": "post-curation-1",
+      "request_id": "9009adcd-5c98-42f8-a52d-d2fba4bbb099",
+      "prompt": "Give me something charming and not too heavy",
+      "title": "Breakfast at Tiffany's",
+      "year": 1961,
+      "error": null
+    },
+    {
+      "pair_id": 3,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 11015.66,
+      "session_id": "post-curation-1",
+      "request_id": "67eca362-f329-4971-8d39-039175fd045f",
+      "prompt": "Low-stress vibe with heart and good pacing",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 3,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 10497.36,
+      "session_id": "post-curation-1",
+      "request_id": "bb8eaf11-ed19-4d2f-8620-dd21aa477ca7",
+      "prompt": "Low-stress vibe with heart and good pacing",
+      "title": "Love, Simon",
+      "year": 2018,
+      "error": null
+    },
+    {
+      "pair_id": 4,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 11806.06,
+      "session_id": "post-curation-2",
+      "request_id": "047fac45-eeab-42d9-99d4-f97f78f9ce11",
+      "prompt": "I need a comfort watch with high rewatch value",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 4,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 11848.4,
+      "session_id": "post-curation-2",
+      "request_id": "dc97be31-3647-4673-8862-5ab1a2d0afad",
+      "prompt": "I need a comfort watch with high rewatch value",
+      "title": "Forrest Gump",
+      "year": 1994,
+      "error": null
+    },
+    {
+      "pair_id": 5,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 11082.74,
+      "session_id": "post-curation-2",
+      "request_id": "18b22a6c-ce82-400e-97c2-9dd7ac6d748b",
+      "prompt": "A high-quality vibe watch, no stress",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 5,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 11075.21,
+      "session_id": "post-curation-2",
+      "request_id": "0f24ae62-5969-4504-a471-c000e83ab118",
+      "prompt": "A high-quality vibe watch, no stress",
+      "title": "Breakfast at Tiffany's",
+      "year": 1961,
+      "error": null
+    },
+    {
+      "pair_id": 6,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 12365.15,
+      "session_id": "post-curation-3",
+      "request_id": "ce84818c-3eac-48cf-979c-dc26b2eca262",
+      "prompt": "I want a feel-good pick that is not childish",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 6,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 10941.82,
+      "session_id": "post-curation-3",
+      "request_id": "617aafc6-73f7-4261-b8f7-7182857cabbc",
+      "prompt": "I want a feel-good pick that is not childish",
+      "title": "Moonrise Kingdom",
+      "year": 2012,
+      "error": null
+    },
+    {
+      "pair_id": 7,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 11186.72,
+      "session_id": "post-curation-3",
+      "request_id": "ee4043b0-9731-44ca-8288-bb71467485e2",
+      "prompt": "I need a movie that leaves me in a better mood",
+      "title": "Love, Simon",
+      "year": 2018,
+      "error": null
+    },
+    {
+      "pair_id": 7,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 12774.53,
+      "session_id": "post-curation-3",
+      "request_id": "f31cf7dd-cde1-4a20-8562-9390cb54e9ed",
+      "prompt": "I need a movie that leaves me in a better mood",
+      "title": "Moonrise Kingdom",
+      "year": 2012,
+      "error": null
+    },
+    {
+      "pair_id": 8,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 11767.07,
+      "session_id": "post-curation-4",
+      "request_id": "d76678a5-6d93-4d44-b706-7723346a077d",
+      "prompt": "I want a reliable, warm recommendation for tonight",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 8,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 10700.57,
+      "session_id": "post-curation-4",
+      "request_id": "c336c123-83fb-4086-9a08-403b5d45a6b3",
+      "prompt": "I want a reliable, warm recommendation for tonight",
+      "title": "Moonrise Kingdom",
+      "year": 2012,
+      "error": null
+    },
+    {
+      "pair_id": 9,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 12587.46,
+      "session_id": "post-curation-4",
+      "request_id": "52df6136-c71d-4ed9-a29e-0343555a78a3",
+      "prompt": "Low-stress vibe with heart and good pacing",
+      "title": "Moonrise Kingdom",
+      "year": 2012,
+      "error": null
+    },
+    {
+      "pair_id": 9,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 12729.07,
+      "session_id": "post-curation-4",
+      "request_id": "7276e209-4c4f-483a-8865-20a9203df68e",
+      "prompt": "Low-stress vibe with heart and good pacing",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    }
+  ]
+}

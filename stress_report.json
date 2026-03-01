@@ -1,0 +1,565 @@
+{
+  "config": {
+    "base_url": "http://127.0.0.1:8011",
+    "requests": 20,
+    "with_rerolls": true,
+    "format": "any",
+    "length": "any",
+    "session_prefix": "stress",
+    "seed": 7
+  },
+  "summary": {
+    "total_requests": 40,
+    "successful_requests": 40,
+    "failed_requests": 0,
+    "success_rate": 1.0,
+    "latency_ms": {
+      "p50": 11337.47,
+      "p90": 12388.82,
+      "p95": 13683.08,
+      "avg": 11295.91
+    },
+    "diversity": {
+      "unique_titles": 12,
+      "total_titles": 40,
+      "unique_ratio": 0.3,
+      "top_titles": [
+        [
+          "The Apartment",
+          10
+        ],
+        [
+          "Forrest Gump",
+          8
+        ],
+        [
+          "Sing Street",
+          6
+        ],
+        [
+          "Chungking Express",
+          6
+        ],
+        [
+          "Avatar: The Last Airbender",
+          2
+        ],
+        [
+          "Love, Simon",
+          2
+        ],
+        [
+          "The Shawshank Redemption",
+          1
+        ],
+        [
+          "Castaway on the Moon",
+          1
+        ],
+        [
+          "Anne with an E",
+          1
+        ],
+        [
+          "La La Land",
+          1
+        ]
+      ]
+    },
+    "year_stats": {
+      "min": 1960,
+      "median": 1994,
+      "max": 2018,
+      "before_1960_count": 0,
+      "before_1960_ratio": 0.0
+    },
+    "reroll": {
+      "evaluated_pairs": 20,
+      "changed_title_pairs": 20,
+      "change_rate": 1.0
+    },
+    "errors": []
+  },
+  "records": [
+    {
+      "pair_id": 0,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 13683.08,
+      "session_id": "stress-0",
+      "request_id": "7fdbded7-0bb9-4413-b0b2-5913c73d73e1",
+      "prompt": "I want a positive tone without being cheesy",
+      "title": "Avatar: The Last Airbender",
+      "year": 2005,
+      "error": null
+    },
+    {
+      "pair_id": 0,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 11375.55,
+      "session_id": "stress-0",
+      "request_id": "b08030f5-b4e4-45a1-9053-f1a9fc74654b",
+      "prompt": "I want a positive tone without being cheesy",
+      "title": "The Shawshank Redemption",
+      "year": 1994,
+      "error": null
+    },
+    {
+      "pair_id": 1,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 12465.12,
+      "session_id": "stress-0",
+      "request_id": "838e5c50-735c-4830-a41d-7742092db257",
+      "prompt": "Give me a cozy but smart recommendation",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 1,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 12013.94,
+      "session_id": "stress-0",
+      "request_id": "f8b32855-18c5-49e6-8997-857344259ef0",
+      "prompt": "Give me a cozy but smart recommendation",
+      "title": "Castaway on the Moon",
+      "year": 2009,
+      "error": null
+    },
+    {
+      "pair_id": 2,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 9471.12,
+      "session_id": "stress-1",
+      "request_id": "d51fcd7a-5d9c-4205-95b0-ffc7a0aa5fd8",
+      "prompt": "Give me something charming and not too heavy",
+      "title": "Sing Street",
+      "year": 2016,
+      "error": null
+    },
+    {
+      "pair_id": 2,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 11182.68,
+      "session_id": "stress-1",
+      "request_id": "dc42def2-b63b-492f-b898-8ce931b8f465",
+      "prompt": "Give me something charming and not too heavy",
+      "title": "Chungking Express",
+      "year": 1994,
+      "error": null
+    },
+    {
+      "pair_id": 3,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 10791.09,
+      "session_id": "stress-1",
+      "request_id": "d7dd52fe-c5f1-424a-846f-93652401cd10",
+      "prompt": "Low-stress vibe with heart and good pacing",
+      "title": "Chungking Express",
+      "year": 1994,
+      "error": null
+    },
+    {
+      "pair_id": 3,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 11751.44,
+      "session_id": "stress-1",
+      "request_id": "b059b58a-7e1a-4375-aff5-7cbb0a257b91",
+      "prompt": "Low-stress vibe with heart and good pacing",
+      "title": "Sing Street",
+      "year": 2016,
+      "error": null
+    },
+    {
+      "pair_id": 4,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 10152.12,
+      "session_id": "stress-2",
+      "request_id": "74bf47ea-6e28-4b62-b9a6-a4e2087daa14",
+      "prompt": "I need a comfort watch with high rewatch value",
+      "title": "Forrest Gump",
+      "year": 1994,
+      "error": null
+    },
+    {
+      "pair_id": 4,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 11337.47,
+      "session_id": "stress-2",
+      "request_id": "6cb7dd48-7600-4308-b885-2028f6304755",
+      "prompt": "I need a comfort watch with high rewatch value",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 5,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 11135.68,
+      "session_id": "stress-2",
+      "request_id": "ad0c9782-28f3-4a8e-9799-00dc50378c5e",
+      "prompt": "A high-quality vibe watch, no stress",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 5,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 10246.74,
+      "session_id": "stress-2",
+      "request_id": "3f30f5e7-6729-4b34-aefb-40a35b448e72",
+      "prompt": "A high-quality vibe watch, no stress",
+      "title": "Chungking Express",
+      "year": 1994,
+      "error": null
+    },
+    {
+      "pair_id": 6,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 10286.63,
+      "session_id": "stress-3",
+      "request_id": "59596158-3bbf-4f6d-ba24-ed971d250e66",
+      "prompt": "I want a feel-good pick that is not childish",
+      "title": "Forrest Gump",
+      "year": 1994,
+      "error": null
+    },
+    {
+      "pair_id": 6,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 11463.42,
+      "session_id": "stress-3",
+      "request_id": "cdf49d6a-7e3d-4065-a130-9720173189a9",
+      "prompt": "I want a feel-good pick that is not childish",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 7,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 10027.18,
+      "session_id": "stress-3",
+      "request_id": "cadd82e9-f480-4919-b5ad-810d698dd486",
+      "prompt": "I need a movie that leaves me in a better mood",
+      "title": "Sing Street",
+      "year": 2016,
+      "error": null
+    },
+    {
+      "pair_id": 7,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 10049.53,
+      "session_id": "stress-3",
+      "request_id": "27cb22cd-e2c2-444b-aeef-0f68e72530d1",
+      "prompt": "I need a movie that leaves me in a better mood",
+      "title": "Love, Simon",
+      "year": 2018,
+      "error": null
+    },
+    {
+      "pair_id": 8,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 12237.63,
+      "session_id": "stress-4",
+      "request_id": "7bb2a840-09f4-442b-99f2-d83f4dd1233b",
+      "prompt": "I want a reliable, warm recommendation for tonight",
+      "title": "Forrest Gump",
+      "year": 1994,
+      "error": null
+    },
+    {
+      "pair_id": 8,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 11497.22,
+      "session_id": "stress-4",
+      "request_id": "dbe80d0c-33b1-4cfb-8c6b-ca3e623f9973",
+      "prompt": "I want a reliable, warm recommendation for tonight",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 9,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 12077.09,
+      "session_id": "stress-4",
+      "request_id": "fab73704-8d25-4675-b026-1f81a8af9c71",
+      "prompt": "Low-stress vibe with heart and good pacing",
+      "title": "Chungking Express",
+      "year": 1994,
+      "error": null
+    },
+    {
+      "pair_id": 9,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 14005.6,
+      "session_id": "stress-4",
+      "request_id": "b5b42471-f96e-4cec-9729-14af82994e2a",
+      "prompt": "Low-stress vibe with heart and good pacing",
+      "title": "Sing Street",
+      "year": 2016,
+      "error": null
+    },
+    {
+      "pair_id": 10,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 11437.86,
+      "session_id": "stress-5",
+      "request_id": "5f186eb5-1985-4108-b154-4ab4535b8db6",
+      "prompt": "Something modern and uplifting with momentum",
+      "title": "Sing Street",
+      "year": 2016,
+      "error": null
+    },
+    {
+      "pair_id": 10,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 10536.39,
+      "session_id": "stress-5",
+      "request_id": "8f627a33-b3aa-4db1-ae48-43413ad2fcdc",
+      "prompt": "Something modern and uplifting with momentum",
+      "title": "Love, Simon",
+      "year": 2018,
+      "error": null
+    },
+    {
+      "pair_id": 11,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 13782.12,
+      "session_id": "stress-5",
+      "request_id": "3deaa3d2-aee3-4b72-bed6-4f406da008dd",
+      "prompt": "Something emotionally safe but still engaging",
+      "title": "Anne with an E",
+      "year": 2017,
+      "error": null
+    },
+    {
+      "pair_id": 11,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 12247.65,
+      "session_id": "stress-5",
+      "request_id": "26398b3d-2a09-47eb-b5c6-13dd5b8c9bfa",
+      "prompt": "Something emotionally safe but still engaging",
+      "title": "Avatar: The Last Airbender",
+      "year": 2005,
+      "error": null
+    },
+    {
+      "pair_id": 12,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 12388.82,
+      "session_id": "stress-6",
+      "request_id": "1a6234c1-f947-4db7-9adf-88b90cd2b5d7",
+      "prompt": "Low-stress vibe with heart and good pacing",
+      "title": "Chungking Express",
+      "year": 1994,
+      "error": null
+    },
+    {
+      "pair_id": 12,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 11845.23,
+      "session_id": "stress-6",
+      "request_id": "1a412dea-99d5-40a9-b220-2434c5b5eb7a",
+      "prompt": "Low-stress vibe with heart and good pacing",
+      "title": "Sing Street",
+      "year": 2016,
+      "error": null
+    },
+    {
+      "pair_id": 13,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 9535.83,
+      "session_id": "stress-6",
+      "request_id": "96c73be4-3791-4b0b-8f50-55f27a7e9304",
+      "prompt": "I need a comfort watch with high rewatch value",
+      "title": "Forrest Gump",
+      "year": 1994,
+      "error": null
+    },
+    {
+      "pair_id": 13,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 10339.54,
+      "session_id": "stress-6",
+      "request_id": "ba0e9f72-5db4-4e60-8b46-d8ddfdcfb717",
+      "prompt": "I need a comfort watch with high rewatch value",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 14,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 11283.95,
+      "session_id": "stress-7",
+      "request_id": "20a3f5a9-ea8e-4981-baae-8089229f540d",
+      "prompt": "I want something acclaimed but accessible",
+      "title": "Forrest Gump",
+      "year": 1994,
+      "error": null
+    },
+    {
+      "pair_id": 14,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 11523.83,
+      "session_id": "stress-7",
+      "request_id": "30b0e591-e3d2-48f3-98ba-a1257eebcc4b",
+      "prompt": "I want something acclaimed but accessible",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 15,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 10029.7,
+      "session_id": "stress-7",
+      "request_id": "0b80f073-fa56-4df8-b6d6-d64580d2be8a",
+      "prompt": "I want something acclaimed but accessible",
+      "title": "Forrest Gump",
+      "year": 1994,
+      "error": null
+    },
+    {
+      "pair_id": 15,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 10684.27,
+      "session_id": "stress-7",
+      "request_id": "5eb017c2-4fa7-4d4c-907a-64eb4c19cc23",
+      "prompt": "I want something acclaimed but accessible",
+      "title": "La La Land",
+      "year": 2016,
+      "error": null
+    },
+    {
+      "pair_id": 16,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 11760.25,
+      "session_id": "stress-8",
+      "request_id": "c0365f6e-e0e4-4b4d-8b75-75e764f92a47",
+      "prompt": "I need a comfort watch with high rewatch value",
+      "title": "Forrest Gump",
+      "year": 1994,
+      "error": null
+    },
+    {
+      "pair_id": 16,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 10776.7,
+      "session_id": "stress-8",
+      "request_id": "0030080e-3bbf-4af6-97e6-f0b693b7a49c",
+      "prompt": "I need a comfort watch with high rewatch value",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 17,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 11542.15,
+      "session_id": "stress-8",
+      "request_id": "dd5408a5-d40c-4347-ad49-7cfdcf466118",
+      "prompt": "A fun, polished movie I can trust",
+      "title": "The Princess Bride",
+      "year": 1987,
+      "error": null
+    },
+    {
+      "pair_id": 17,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 11117.23,
+      "session_id": "stress-8",
+      "request_id": "6201ca07-6958-46f8-bdc1-7112d02bdab0",
+      "prompt": "A fun, polished movie I can trust",
+      "title": "Hercules",
+      "year": 1997,
+      "error": null
+    },
+    {
+      "pair_id": 18,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 11090.68,
+      "session_id": "stress-9",
+      "request_id": "210139a5-8b07-4a20-997e-3302b5de98e5",
+      "prompt": "I need a comfort watch with high rewatch value",
+      "title": "Forrest Gump",
+      "year": 1994,
+      "error": null
+    },
+    {
+      "pair_id": 18,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 10576.56,
+      "session_id": "stress-9",
+      "request_id": "b794ee67-97a0-4e90-9b81-5220ae5fe637",
+      "prompt": "I need a comfort watch with high rewatch value",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 19,
+      "attempt": 1,
+      "status": 200,
+      "latency_ms": 11780.63,
+      "session_id": "stress-9",
+      "request_id": "dd299c90-f3f6-4439-8c42-98e1d3259e65",
+      "prompt": "A high-quality vibe watch, no stress",
+      "title": "The Apartment",
+      "year": 1960,
+      "error": null
+    },
+    {
+      "pair_id": 19,
+      "attempt": 2,
+      "status": 200,
+      "latency_ms": 10306.64,
+      "session_id": "stress-9",
+      "request_id": "7d3c5e3c-3c16-454c-8049-d2b246f60c78",
+      "prompt": "A high-quality vibe watch, no stress",
+      "title": "Chungking Express",
+      "year": 1994,
+      "error": null
+    }
+  ]
+}

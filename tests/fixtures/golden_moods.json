@@ -1,0 +1,12 @@
+[
+  {"input": "cozy comfort comedy", "expected_tone": "comfort"},
+  {"input": "dark psychological thriller", "expected_genre": 53},
+  {"input": "something my kids would like", "expected_genre": 10751},
+  {"input": "mind-bending sci-fi", "expected_genre": 878},
+  {"input": "I want to cry", "expected_genre": 18},
+  {"input": "background noise while I cook", "expected_tone": "background"},
+  {"input": "date night movie", "expected_genre": 10749},
+  {"input": "can't sleep, need something long and slow", "expected_tone": "slow"},
+  {"input": "just had a breakup", "expected_tone": "breakup"},
+  {"input": "roulette", "expected_tone": "roulette"}
+]

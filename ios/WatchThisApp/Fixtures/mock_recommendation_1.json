@@ -1,0 +1,35 @@
+{
+  "request_id": "mock-1",
+  "recommendation": {
+    "tmdb_id": 13,
+    "media_type": "movie",
+    "title": "Forrest Gump",
+    "year": 1994,
+    "poster_url": "https://image.tmdb.org/t/p/w780/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg",
+    "genres": ["Drama", "Comedy", "Romance"],
+    "overview": "A warm, funny, and unexpectedly uplifting journey through ordinary life and extraordinary moments.",
+    "vote_average": 8.5,
+    "vote_count": 26000,
+    "runtime": 142,
+    "keywords": ["feel-good", "comfort", "heartwarming"],
+    "top_cast": ["Tom Hanks", "Robin Wright"],
+    "imdb_id": "tt0109830"
+  },
+  "pitch": "You asked for something easy to sink into, and this delivers emotional warmth without feeling heavy. It is funny, sincere, and genuinely comforting.",
+  "confidence": 0.88,
+  "reasoning": "Strong comfort signal and broad quality consensus",
+  "streaming_sources": [
+    {
+      "source_id": "203",
+      "name": "Prime Video",
+      "type": "sub",
+      "web_url": "https://www.primevideo.com",
+      "format": "HD"
+    },
+    {
+      "name": "JustWatch",
+      "type": "info",
+      "web_url": "https://www.justwatch.com/us/search?q=Forrest+Gump+1994"
+    }
+  ]
+}

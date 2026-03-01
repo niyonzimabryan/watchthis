@@ -1,0 +1,12 @@
+fastapi>=0.116.0
+uvicorn>=0.35.0
+httpx>=0.28.0
+anyio>=4.8.0
+pydantic>=2.10.0
+pydantic-settings>=2.7.0
+python-dotenv>=1.0.1
+anthropic>=0.47.0
+typer>=0.15.0
+pytest>=8.3.0
+pytest-asyncio>=0.25.0
+respx>=0.22.0

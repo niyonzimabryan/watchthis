@@ -15,16 +15,20 @@ class Settings(BaseSettings):
     watchmode_api_key: str | None = Field(default=None, alias="WATCHMODE_API_KEY")
     omdb_api_key: str | None = Field(default=None, alias="OMDB_API_KEY")
     anthropic_api_key: str | None = Field(default=None, alias="ANTHROPIC_API_KEY")
+    gemini_api_key: str | None = Field(default=None, alias="GEMINI_API_KEY")
     allow_heuristic_fallback: bool = Field(default=False, alias="WATCHTHIS_ALLOW_HEURISTIC_FALLBACK")
 
     db_path: str = Field(default="data/watchthis.db", alias="WATCHTHIS_DB_PATH")
     log_level: str = Field(default="INFO", alias="WATCHTHIS_LOG_LEVEL")
     http_timeout_seconds: float = Field(default=12.0, alias="WATCHTHIS_HTTP_TIMEOUT_SECONDS")
 
-    haiku_model: str = Field(default="claude-3-5-haiku-latest", alias="WATCHTHIS_HAIKU_MODEL")
-    sonnet_model: str = Field(default="claude-3-5-sonnet-latest", alias="WATCHTHIS_SONNET_MODEL")
-    opus_model: str = Field(default="claude-opus-4-1", alias="WATCHTHIS_OPUS_MODEL")
-    use_opus_for_ranking: bool = Field(default=False, alias="WATCHTHIS_USE_OPUS_FOR_RANKING")
+    haiku_model: str = Field(default="claude-haiku-4-5-20251001", alias="WATCHTHIS_HAIKU_MODEL")
+    sonnet_model: str = Field(default="claude-sonnet-4-6", alias="WATCHTHIS_SONNET_MODEL")
+    opus_model: str = Field(default="claude-opus-4-6", alias="WATCHTHIS_OPUS_MODEL")
+    use_opus_for_ranking: bool = Field(default=True, alias="WATCHTHIS_USE_OPUS_FOR_RANKING")
+
+    gemini_flash_model: str = Field(default="gemini-3.1-flash-lite-preview", alias="WATCHTHIS_GEMINI_FLASH_MODEL")
+    gemini_pro_model: str = Field(default="gemini-3.1-pro-preview", alias="WATCHTHIS_GEMINI_PRO_MODEL")
 
     tmdb_discover_ttl_hours: int = 6
     title_cache_ttl_hours: int = 24

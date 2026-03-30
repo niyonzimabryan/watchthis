@@ -1,22 +1,35 @@
 from __future__ import annotations
 
+import logging
 import re
 
 from clients.anthropic_client import AnthropicClient
+from clients.gemini_client import GeminiClient
 from data.models import MoodInterpretation
+
+logger = logging.getLogger("watchthis")
 
 
 class MoodInterpreter:
-    def __init__(self, anthropic_client: AnthropicClient) -> None:
+    def __init__(self, anthropic_client: AnthropicClient, gemini_client: GeminiClient | None = None) -> None:
         self.anthropic_client = anthropic_client
+        self.gemini_client = gemini_client
 
     async def interpret(self, mood_input: str | None, is_roulette: bool = False) -> MoodInterpretation:
         if is_roulette:
             return self.anthropic_client.roulette_defaults()
 
         if not mood_input or not mood_input.strip():
-            # Empty moods degrade to roulette-like behavior to keep UX decisive.
             return self.anthropic_client.roulette_defaults()
+
+        # Primary: Gemini Flash-Lite (cheaper, faster)
+        # Fallback: Anthropic Haiku
+        if self.gemini_client:
+            try:
+                interpreted = await self.gemini_client.interpret_mood(mood_input)
+                return self._apply_explicit_constraints(mood_input, interpreted)
+            except Exception:
+                logger.warning("Gemini mood interpretation failed, falling back to Haiku")
 
         interpreted = await self.anthropic_client.interpret_mood(mood_input)
         return self._apply_explicit_constraints(mood_input, interpreted)

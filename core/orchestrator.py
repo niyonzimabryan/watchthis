@@ -5,7 +5,10 @@ import time
 import uuid
 from typing import Any
 
+import asyncio
+
 from clients.anthropic_client import AnthropicClient
+from clients.gemini_client import GeminiClient
 from clients.omdb_client import OMDbClient
 from clients.tmdb_client import TMDBClient
 from clients.watchmode_client import WatchmodeClient
@@ -32,6 +35,7 @@ class WatchThisOrchestrator:
         candidate_curator: CandidateCurator,
         ranker: Ranker,
         streaming_lookup: StreamingLookup,
+        gemini_client: GeminiClient | None = None,
         settings: Settings | None = None,
     ) -> None:
         self.settings = settings or get_settings()
@@ -41,6 +45,7 @@ class WatchThisOrchestrator:
         self.candidate_curator = candidate_curator
         self.ranker = ranker
         self.streaming_lookup = streaming_lookup
+        self.gemini_client = gemini_client
 
         logging.basicConfig(level=self.settings.log_level)
         logging.getLogger("httpx").setLevel(logging.WARNING)
@@ -54,14 +59,16 @@ class WatchThisOrchestrator:
         tmdb_client = TMDBClient(cfg)
         omdb_client = OMDbClient(cfg)
         watchmode_client = WatchmodeClient(cfg)
+        gemini_client = GeminiClient(cfg) if cfg.gemini_api_key else None
 
         return cls(
-            mood_interpreter=MoodInterpreter(anthropic_client),
+            mood_interpreter=MoodInterpreter(anthropic_client, gemini_client),
             candidate_retriever=CandidateRetriever(tmdb_client, cfg),
             signal_enricher=SignalEnricher(omdb_client, cfg),
             candidate_curator=CandidateCurator(cfg),
             ranker=Ranker(anthropic_client),
             streaming_lookup=StreamingLookup(watchmode_client),
+            gemini_client=gemini_client,
             settings=cfg,
         )
 
@@ -105,8 +112,44 @@ class WatchThisOrchestrator:
             if not candidates:
                 raise ValueError("No candidates found for the given mood and filters")
 
+            # Parallel enrichment: OMDb/Reddit (existing) + Gemini Pro search (new)
             stage = time.perf_counter()
-            enriched = await self.signal_enricher.enrich(candidates, interpretation.mood_tags)
+
+            enrich_task = self.signal_enricher.enrich(candidates, interpretation.mood_tags)
+
+            gemini_search_task = None
+            if self.gemini_client and not request.is_roulette:
+                gemini_search_task = self.gemini_client.search_recommendations(
+                    mood_text=request.mood_input,
+                    mood_tags=interpretation.mood_tags,
+                    format_filter=request.filters.format,
+                )
+
+            if gemini_search_task:
+                enriched, gemini_recs = await asyncio.gather(
+                    enrich_task, gemini_search_task, return_exceptions=True
+                )
+                if isinstance(enriched, Exception):
+                    raise enriched
+                if isinstance(gemini_recs, Exception):
+                    logger.warning("Gemini search failed: %s", gemini_recs)
+                    gemini_recs = []
+
+                # Boost candidates that Gemini's community search also recommends
+                if gemini_recs and isinstance(gemini_recs, list):
+                    gemini_titles = {
+                        r.get("title", "").lower().strip()
+                        for r in gemini_recs
+                        if isinstance(r, dict)
+                    }
+                    for candidate in enriched:
+                        if candidate.title.lower().strip() in gemini_titles:
+                            candidate.reddit_boost = max(candidate.reddit_boost, 1.5)
+                            if "gemini-recommended" not in candidate.reddit_mood_match:
+                                candidate.reddit_mood_match.append("gemini-recommended")
+            else:
+                enriched = await enrich_task
+
             latency_enrich = int((time.perf_counter() - stage) * 1000)
 
             shortlisted = self.candidate_curator.curate(

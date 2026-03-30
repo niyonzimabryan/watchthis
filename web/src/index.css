@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #F7F6F2;
+  --color-bg-card: #FFFFFF;
+  --color-ink-primary: #1F2937;
+  --color-ink-secondary: #4B5563;
+  --color-accent-teal: #2F7F7A;
+  --color-accent-coral: #E86E6E;
+  --color-accent-gold: #D9A441;
+  --color-success-mint: #5BAE8A;
+  --color-warning-rose: #C65E6A;
+
+  --font-rounded: "SF Pro Rounded", ui-rounded, system-ui, -apple-system, sans-serif;
+}
+
+html, body, #root {
+  min-height: 100dvh;
+  background: var(--color-bg-primary);
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  animation: shimmer 1.2s linear infinite;
+}
+
+/* Pulse animation for CTA */
+@keyframes subtle-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.pulse-cta {
+  animation: subtle-pulse 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-cta { animation: none; }
+  .shimmer::after { animation: none; }
+}
+
+/* Show Me button — special gradient + glow */
+.showme-btn {
+  background: linear-gradient(135deg, #7c3aed, #6366f1, #818cf8);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3), 0 0 40px rgba(124, 58, 237, 0.1);
+  transition: box-shadow 0.3s, opacity 0.2s;
+}
+
+.showme-btn:hover:not(:disabled) {
+  box-shadow: 0 6px 28px rgba(99, 102, 241, 0.45), 0 0 50px rgba(124, 58, 237, 0.15);
+}
+
+.showme-btn.showme-sent {
+  background: linear-gradient(135deg, #059669, #10b981);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+}
+
+.showme-btn.showme-error {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
+}
+
+@keyframes showme-glow {
+  0%, 100% { box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3), 0 0 40px rgba(124, 58, 237, 0.1); }
+  50% { box-shadow: 0 4px 28px rgba(99, 102, 241, 0.5), 0 0 60px rgba(124, 58, 237, 0.2); }
+}
+
+.showme-btn:not(:disabled):not(.showme-sent):not(.showme-error) {
+  animation: showme-glow 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showme-btn { animation: none !important; }
+}
+
+/* Hide scrollbar but keep scroll */
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }

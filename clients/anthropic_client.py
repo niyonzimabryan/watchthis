@@ -97,12 +97,16 @@ class AnthropicClient:
             "candidates": trimmed,
         }
 
-        model_name = self.settings.opus_model if self.settings.use_opus_for_ranking else self.settings.sonnet_model
+        model_name = self.settings.opus_model
         prompt = (
             "Pick exactly one candidate and return strict JSON with keys selected_tmdb_id, pitch, confidence, reasoning. "
-            "Pitch must be 2-4 sentences, spoiler-free, and read like a sharp personal recommendation. "
+            "Pitch must be 2-4 sentences, spoiler-free, and read like a sharp personal recommendation from a friend with great taste. "
             "Reasoning should briefly explain the strongest mood match and quality signals. "
-            "Optimize for this order: mood fit, quality/acclaim, subtle surprise, then familiarity as a tiebreaker. "
+            "CRITICAL: You MUST respect the user's format and length filters. "
+            "If format is 'movie', only pick movies. If format is 'tv', only pick TV shows. "
+            "If length is 'quick', pick something short (movies under 95min, TV episodes under 35min). "
+            "If length is 'long', pick something long (movies over 100min, prestige TV over 50min). "
+            "Optimize for this order: filter compliance, mood fit, quality/acclaim, subtle surprise, then familiarity as a tiebreaker. "
             "Avoid obvious repeats unless they are clearly the best fit."
             f"\nInput: {json.dumps(prompt_payload, ensure_ascii=True)}"
         )

@@ -11,3 +11,4 @@ typer>=0.15.0
 pytest>=8.3.0
 pytest-asyncio>=0.25.0
 respx>=0.22.0
+pychromecast>=14.0.0

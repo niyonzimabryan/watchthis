@@ -1,0 +1,15 @@
+.venv
+__pycache__
+*.pyc
+.env
+.git
+.DS_Store
+ios/
+docs/
+web/node_modules
+web/dist
+data/watchthis.db
+logs/
+tests/
+stress_report*.json
+.claude/

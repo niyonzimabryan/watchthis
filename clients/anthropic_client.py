@@ -101,6 +101,9 @@ class AnthropicClient:
         prompt = (
             "Pick exactly one candidate and return strict JSON with keys selected_tmdb_id, pitch, confidence, reasoning. "
             "Pitch must be 2-4 sentences, spoiler-free, and read like a sharp personal recommendation from a friend with great taste. "
+            "When the candidate has a notable director, top cast, runtime, or award_badge, weave one or two of those concrete details into the pitch — they help the recommendation land. "
+            "Don't list every detail; pick the single most evocative anchor (e.g. 'Villeneuve doing what he does best' or '116 minutes, no wasted seconds'). "
+            "Never invent details that aren't in the candidate data. If a field is missing, just rely on the personality voice. "
             "Reasoning should briefly explain the strongest mood match and quality signals. "
             "CRITICAL: You MUST respect the user's format and length filters. "
             "If format is 'movie', only pick movies. If format is 'tv', only pick TV shows. "

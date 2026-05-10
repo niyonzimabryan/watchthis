@@ -94,6 +94,10 @@ class SignalEnricher:
         candidate.metacritic = parsed.get("metacritic_numeric")
         candidate.imdb_rating = parsed.get("imdb_numeric")
 
+        awards_raw, award_badge = self.omdb_client.parse_awards(omdb_payload)
+        candidate.awards = awards_raw
+        candidate.award_badge = award_badge
+
     @staticmethod
     def _omdb_priority_score(candidate: Candidate) -> float:
         return (

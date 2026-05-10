@@ -151,3 +151,56 @@ def get_request_log(conn: sqlite3.Connection, request_id: str) -> dict[str, Any]
     data = dict(row)
     data["mood_interpretation"] = _from_json(data.get("mood_interpretation"))
     return data
+
+
+def request_log_exists(conn: sqlite3.Connection, request_id: str) -> bool:
+    row = conn.execute(
+        "SELECT 1 FROM request_log WHERE id = ? LIMIT 1",
+        (request_id,),
+    ).fetchone()
+    return row is not None
+
+
+def record_vote(
+    conn: sqlite3.Connection,
+    *,
+    request_id: str,
+    session_id: str,
+    vote: int,
+    reason: str | None,
+) -> None:
+    """UPSERT a vote so a tester flipping their vote replaces the old row instead
+    of double-counting. Reason text is replaced too — the latest take wins."""
+    conn.execute(
+        """
+        INSERT INTO votes (request_id, session_id, vote, reason, created_at, updated_at)
+        VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+        ON CONFLICT(request_id, session_id) DO UPDATE SET
+            vote = excluded.vote,
+            reason = excluded.reason,
+            updated_at = CURRENT_TIMESTAMP
+        """,
+        (request_id, session_id, vote, reason),
+    )
+
+
+def get_vote_stats(conn: sqlite3.Connection) -> dict[str, Any]:
+    totals = conn.execute(
+        """
+        SELECT
+            SUM(CASE WHEN vote = 1 THEN 1 ELSE 0 END) AS upvotes,
+            SUM(CASE WHEN vote = -1 THEN 1 ELSE 0 END) AS downvotes,
+            COUNT(*) AS total,
+            COUNT(reason) AS with_reason,
+            COUNT(DISTINCT session_id) AS distinct_sessions
+        FROM votes
+        """
+    ).fetchone()
+
+    return {
+        "upvotes": int(totals["upvotes"] or 0),
+        "downvotes": int(totals["downvotes"] or 0),
+        "total": int(totals["total"] or 0),
+        "with_reason": int(totals["with_reason"] or 0),
+        "distinct_sessions": int(totals["distinct_sessions"] or 0),
+    }

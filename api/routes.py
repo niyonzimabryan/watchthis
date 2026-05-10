@@ -5,6 +5,7 @@ from functools import lru_cache
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field
 
+from api.rate_limit import enforce_recommend_rate_limit
 from core.errors import DependencyUnavailableError
 from core.orchestrator import WatchThisOrchestrator
 from data.models import FormatFilter, LengthFilter, RecommendationRequest, UserFilters
@@ -40,7 +41,7 @@ async def health() -> dict[str, str]:
     return {"status": "ok"}
 
 
-@router.post("/recommend")
+@router.post("/recommend", dependencies=[Depends(enforce_recommend_rate_limit)])
 async def recommend(payload: RecommendInput, orchestrator: WatchThisOrchestrator = Depends(get_orchestrator)):
     request = RecommendationRequest(
         mood_input=payload.mood_input,
@@ -60,7 +61,7 @@ async def recommend(payload: RecommendInput, orchestrator: WatchThisOrchestrator
         raise HTTPException(status_code=500, detail=str(exc)) from exc
 
 
-@router.post("/roulette")
+@router.post("/roulette", dependencies=[Depends(enforce_recommend_rate_limit)])
 async def roulette(payload: RouletteInput, orchestrator: WatchThisOrchestrator = Depends(get_orchestrator)):
     request = RecommendationRequest(
         mood_input=None,

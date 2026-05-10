@@ -16,7 +16,10 @@ pip install -r requirements.txt
 
 ```bash
 cp .env.example .env
+# then edit .env and fill in real API keys (TMDB, Watchmode, OMDB, Anthropic)
 ```
+
+`.env` holds secrets and is gitignored — **never commit it**. Only `.env.example` (with empty placeholders) ships in the repo. Before pushing this repo public, re-verify with `git log --all --full-history -- .env` (must return nothing) and rotate any key that has ever been pasted into chat, screenshots, or a non-gitignored file.
 
 3. Run API:
 
@@ -73,6 +76,12 @@ Config knobs:
 - `WATCHTHIS_RT_FALLBACK_SCORE` (default `70`)
 - `WATCHTHIS_CURATED_CATALOG_ENABLED` (default `true`)
 - `WATCHTHIS_CURATED_CATALOG_PATH` (default `data/curated_exceptions.md`)
+
+## Deployment
+
+- Railway terminates TLS at its edge and proxies HTTP to the container; `railway.toml` runs uvicorn with `--proxy-headers --forwarded-allow-ips=*` so the app sees correct client scheme/IP via `X-Forwarded-Proto` / `X-Forwarded-For`.
+- Set `WATCHTHIS_FORCE_HTTPS=true` on Railway (Variables tab) so `HTTPSRedirectMiddleware` fails closed if any plain-HTTP request ever reaches the app. Local dev should leave it `false` to avoid loopback redirects.
+- `/recommend` and `/roulette` are rate-limited per client IP to cap LLM spend. Defaults: `WATCHTHIS_RATE_LIMIT_BURST_PER_MIN=10`, `WATCHTHIS_RATE_LIMIT_HOURLY=60`. The frontend surfaces the 429 `detail` directly via the existing error toast. Set `WATCHTHIS_RATE_LIMIT_ENABLED=false` only for trusted load testing. Limits are in-memory per process — fine for Railway's single replica; needs Redis if we ever scale horizontally.
 
 ## Notes
 

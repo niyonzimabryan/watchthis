@@ -21,6 +21,11 @@ class Settings(BaseSettings):
     db_path: str = Field(default="data/watchthis.db", alias="WATCHTHIS_DB_PATH")
     log_level: str = Field(default="INFO", alias="WATCHTHIS_LOG_LEVEL")
     http_timeout_seconds: float = Field(default=12.0, alias="WATCHTHIS_HTTP_TIMEOUT_SECONDS")
+    force_https: bool = Field(default=False, alias="WATCHTHIS_FORCE_HTTPS")
+
+    rate_limit_enabled: bool = Field(default=True, alias="WATCHTHIS_RATE_LIMIT_ENABLED")
+    rate_limit_burst_per_min: int = Field(default=10, alias="WATCHTHIS_RATE_LIMIT_BURST_PER_MIN")
+    rate_limit_hourly: int = Field(default=60, alias="WATCHTHIS_RATE_LIMIT_HOURLY")
 
     haiku_model: str = Field(default="claude-haiku-4-5-20251001", alias="WATCHTHIS_HAIKU_MODEL")
     sonnet_model: str = Field(default="claude-sonnet-4-6", alias="WATCHTHIS_SONNET_MODEL")

@@ -67,3 +67,17 @@ CREATE TABLE IF NOT EXISTS request_log (
     reroll_of TEXT,
     error TEXT
 );
+
+CREATE TABLE IF NOT EXISTS votes (
+    request_id TEXT NOT NULL,
+    session_id TEXT,
+    vote INTEGER NOT NULL CHECK (vote IN (-1, 1)),
+    reason TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (request_id, session_id),
+    FOREIGN KEY (request_id) REFERENCES request_log(id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_votes_request ON votes(request_id);
+CREATE INDEX IF NOT EXISTS idx_votes_direction ON votes(vote);

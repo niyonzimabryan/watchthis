@@ -30,6 +30,15 @@ def create_connection(db_path: str | Path | None = None) -> sqlite3.Connection:
     target.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(target)
     conn.row_factory = sqlite3.Row
+    # WAL + busy_timeout: lets readers and writers proceed without blocking each
+    # other on the same file (FastAPI handlers are async but each request opens
+    # its own connection — under burst load multiple writes can collide). 5s is
+    # generous and short-circuits to a clear error rather than a long hang if
+    # something does deadlock. WAL is per-file, persisted, so safe to set every
+    # connect. Only meaningful for single-host SQLite — irrelevant if we ever
+    # migrate to Postgres for multi-replica.
+    conn.execute("PRAGMA journal_mode=WAL")
+    conn.execute("PRAGMA busy_timeout=5000")
     return conn
 
 

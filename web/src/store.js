@@ -264,6 +264,8 @@ export function useAppStore() {
         rtScore: rec.rtScore,
         metacritic: rec.metacritic,
         imdbRating: rec.imdbRating,
+        director: rec.director,
+        awardBadge: rec.awardBadge,
         streamingSources: (currentResponse.streamingSources || []).map(s => ({
           name: s.name,
           type: s.type,

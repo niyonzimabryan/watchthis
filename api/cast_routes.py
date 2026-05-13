@@ -34,6 +34,8 @@ class RecommendationInput(BaseModel):
     rt_score: str | None = None
     metacritic: int | None = None
     imdb_rating: float | None = None
+    director: str | None = None
+    award_badge: str | None = None
     streaming_sources: list[StreamingSourceInput] = []
 
 
@@ -153,11 +155,23 @@ async def cast_view(cast_id: str):
     rt_score = data.get("rt_score")
     metacritic = data.get("metacritic")
     imdb_rating = data.get("imdb_rating")
+    director = data.get("director")
+    award_badge = data.get("award_badge")
     streaming_sources = data.get("streaming_sources", [])
 
     # Build meta line
     meta_parts = [p for p in [media_type, str(year) if year else None, f"{runtime}m" if runtime else None] if p]
     meta_line = " &bull; ".join(meta_parts)
+
+    # Director line — separate so it stays a quiet credit, not part of the dot-meta
+    director_html = ""
+    if director:
+        director_html = f'<p class="director">Directed by {director}</p>'
+
+    # Award badge — single small chip; only when a clear prestige signal exists
+    award_html = ""
+    if award_badge:
+        award_html = f'<div class="award-badge">{award_badge}</div>'
 
     # Genres
     genres_html = ""
@@ -283,6 +297,28 @@ async def cast_view(cast_id: str):
     font-size: 17px;
     color: #9ca3af;
     font-weight: 500;
+    margin-bottom: 6px;
+  }}
+
+  .director {{
+    font-size: 15px;
+    color: #6b7280;
+    font-weight: 500;
+    margin-bottom: 16px;
+    font-style: italic;
+  }}
+
+  .award-badge {{
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(245, 197, 24, 0.12);
+    border: 1px solid rgba(245, 197, 24, 0.4);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #f5c518;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     margin-bottom: 16px;
   }}
 
@@ -397,6 +433,8 @@ async def cast_view(cast_id: str):
     <div class="info">
       <h1 class="title">{title}</h1>
       <p class="meta">{meta_line}</p>
+      {director_html}
+      {award_html}
       {genres_html}
       {conf_html}
       <p class="pitch">{pitch}</p>

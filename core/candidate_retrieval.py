@@ -280,8 +280,23 @@ class CandidateRetriever:
         keyword_rows = keyword_block.get("keywords") or keyword_block.get("results") or []
         keywords = [row.get("name") for row in keyword_rows if row.get("name")]
 
-        cast_rows = detail.get("credits", {}).get("cast", [])
+        credits = detail.get("credits", {}) or {}
+        cast_rows = credits.get("cast", [])
         top_cast = [row.get("name") for row in cast_rows[:3] if row.get("name")]
+
+        crew_rows = credits.get("crew", []) or []
+        director = None
+        for row in crew_rows:
+            job = (row.get("job") or "").strip().lower()
+            if job == "director" and row.get("name"):
+                director = row["name"]
+                break
+        if director is None:
+            for row in crew_rows:
+                job = (row.get("job") or "").strip().lower()
+                if job in {"creator", "executive producer"} and row.get("name"):
+                    director = row["name"]
+                    break
 
         runtime = detail.get("runtime")
         if runtime is None:
@@ -320,6 +335,7 @@ class CandidateRetriever:
             runtime=int(runtime) if runtime is not None else None,
             keywords=keywords,
             top_cast=top_cast,
+            director=director,
             imdb_id=imdb_id,
             raw=detail,
         )

@@ -127,6 +127,7 @@ MOCK_CATALOG: list[dict[str, object]] = [
         "runtime": 148,
         "keywords": ["mind-bending", "dream", "twist"],
         "cast": ["Leonardo DiCaprio", "Joseph Gordon-Levitt"],
+        "director": "Christopher Nolan",
         "imdb_id": "tt1375666",
     },
     {

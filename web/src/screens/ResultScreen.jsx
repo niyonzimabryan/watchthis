@@ -69,9 +69,20 @@ export default function ResultScreen({ store }) {
               <p className="text-[13px] font-medium text-ink-secondary">
                 {meta}
               </p>
+              {rec.director && (
+                <p className="text-[13px] italic text-ink-secondary/80 mt-0.5 truncate">
+                  Directed by {rec.director}
+                </p>
+              )}
             </div>
             <ConfidenceBadge confidence={response.confidence} />
           </div>
+
+          {rec.awardBadge && (
+            <div className="inline-block px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider text-[#f5c518] bg-[#f5c518]/10 border border-[#f5c518]/40">
+              {rec.awardBadge}
+            </div>
+          )}
 
           <p className="text-[17px] text-ink-primary leading-relaxed">
             {response.pitch}

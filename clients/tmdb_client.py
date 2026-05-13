@@ -137,6 +137,11 @@ class TMDBClient:
                     },
                     "credits": {
                         "cast": [{"name": name} for name in item.get("cast", [])],
+                        "crew": (
+                            [{"name": item["director"], "job": "Director"}]
+                            if item.get("director")
+                            else []
+                        ),
                     },
                     "external_ids": {"imdb_id": item.get("imdb_id")},
                     "imdb_id": item.get("imdb_id"),

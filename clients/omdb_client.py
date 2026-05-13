@@ -32,6 +32,43 @@ class OMDbClient:
         return payload
 
     @staticmethod
+    def parse_awards(payload: dict[str, Any] | None) -> tuple[str | None, str | None]:
+        """Return (raw_awards_string, compact_badge).
+
+        Compact badge prioritizes the most prestigious surface form:
+        Oscar Winner > Oscar Nominee > Emmy Winner > Emmy Nominee >
+        Golden Globe Winner > Golden Globe Nominee. Generic "wins" are
+        ignored — they don't read as a recommendation cue.
+        """
+        if not payload:
+            return None, None
+
+        raw = payload.get("Awards")
+        if not isinstance(raw, str) or not raw.strip() or raw.strip() == "N/A":
+            return None, None
+
+        text = raw.strip()
+        lowered = text.lower()
+
+        priorities: list[tuple[str, str, str]] = [
+            ("won", "oscar", "Oscar Winner"),
+            ("nominated for", "oscar", "Oscar Nominee"),
+            ("won", "primetime emmy", "Emmy Winner"),
+            ("nominated for", "primetime emmy", "Emmy Nominee"),
+            ("won", "emmy", "Emmy Winner"),
+            ("nominated for", "emmy", "Emmy Nominee"),
+            ("won", "golden globe", "Golden Globe Winner"),
+            ("nominated for", "golden globe", "Golden Globe Nominee"),
+            ("won", "bafta", "BAFTA Winner"),
+            ("won", "palme d'or", "Palme d'Or Winner"),
+        ]
+        for verb, award, badge in priorities:
+            if verb in lowered and award in lowered:
+                return text, badge
+
+        return text, None
+
+    @staticmethod
     def parse_ratings(payload: dict[str, Any] | None) -> dict[str, Any]:
         if not payload:
             return {}

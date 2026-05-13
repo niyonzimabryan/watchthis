@@ -74,11 +74,14 @@ class Candidate(BaseModel):
     runtime: int | None = None
     keywords: list[str] = Field(default_factory=list)
     top_cast: list[str] = Field(default_factory=list)
+    director: str | None = None
     imdb_id: str | None = None
 
     rt_score: str | None = None
     metacritic: int | None = None
     imdb_rating: float | None = None
+    awards: str | None = None
+    award_badge: str | None = None
 
     reddit_boost: float = 1.0
     reddit_mood_match: list[str] = Field(default_factory=list)

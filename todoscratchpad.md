@@ -89,7 +89,7 @@
 
 ## Tech Debt & Bugs
 
-- [ ] **FastAPI `on_event("startup")` is deprecated** — Should migrate to lifespan context manager pattern
+- [x] **FastAPI `on_event("startup")` is deprecated** — Migrated API startup to FastAPI lifespan context manager pattern (2026-05-22)
 - [ ] **No error handling on vote endpoint for missing request_log** — If DB is fresh (no request_log rows), votes will 404. Edge case but could confuse testers
 - [ ] **SQLite concurrent writes on Railway** — Single-container is fine now but if you ever scale to multiple replicas, SQLite won't handle concurrent writes. Cross that bridge when needed (Postgres migration)
 - [ ] **No HTTPS redirect** — Railway handles this but worth confirming all traffic goes through HTTPS

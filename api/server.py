@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+from contextlib import asynccontextmanager
 from pathlib import Path
+from typing import AsyncIterator
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -15,13 +17,14 @@ from config import get_settings
 from data.database import init_db
 
 
-app = FastAPI(title="WatchThis", version="0.1.0")
-
-
-@app.on_event("startup")
-def startup():
+@asynccontextmanager
+async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     init_db()
     app.state.cast_manager = CastManager()
+    yield
+
+
+app = FastAPI(title="WatchThis", version="0.1.0", lifespan=lifespan)
 
 if get_settings().force_https:
     # Belt-and-suspenders: Railway's edge already redirects http→https, but if a

@@ -1,2 +1,2 @@
 APP_MODE = live
-API_BASE_URL = https://api.watchthis.example.com
+API_BASE_URL = https://watchthis.up.railway.app

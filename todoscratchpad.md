@@ -5,13 +5,34 @@
 
 ---
 
+## Open Prioritized List
+
+<!-- Peer-synced with Hermes kanban + Linear. Reconciled 2026-07-03. Merged on origin/main: PR #1/#2/#4/#5 (lifespan)/#6 (model-lint). -->
+
+- [ ] **P1 — Connect iOS app to Railway** (`BRY-109`, `t_df7af342`, **in_review**) — open **PR #3** `bry-109-ios-railway-url` remains unmerged as of 2026-07-03 (head `59e336c0c3203609398a0b404c6cd3dffa93f6a5`); Release config points at `https://watchthis.up.railway.app`. The earlier "feedback capture" blocker is stale — `POST /vote` + `GET /vote-stats` shipped in [PR #2](https://github.com/niyonzimabryan/watchthis/pull/2) (merged 2026-05-12; contract matches web UI, 8 endpoint tests, full suite 63 passed against origin/main). What actually remains: merge PR #3 + Bryan's manual Xcode Release build verification of mood/roulette/reroll/history flows.
+- [ ] **P2 — Get 200+ voted recs** (`BRY-112`, `t_35f6c746`, blocked) — the linchpin dataset gating Phase 2–4
+- [ ] **P3 — Build eval suite from good/bad vote pairs** (`BRY-114`, `t_28bb2732`, blocked) — gated on the 200-vote dataset
+- [ ] **P3 — Add user ID / device fingerprint** (`BRY-127`, `t_c26f52bf`, blocked) — persistent identity for taste profiles
+- [ ] **P4 — Streaming source accuracy** (`BRY-129`, `t_ef315162`, blocked) — surface "last checked" / flag stale Watchmode data
+
+---
+
 ## Current Tasks
 
-- [ ] **Get 200+ voted recs** — Manual testing with friends via live Railway URL to build training dataset
-- [ ] **Connect iOS app to Railway** — Update `Release` config `API_BASE_URL` to `https://watchthis.up.railway.app`
-- [ ] **Add production app icon and launch artwork** — For iOS App Store submission
-- [ ] **One-command setup for new cloners** — Create a `setup.sh` (or Makefile) that: creates a venv, installs Python deps (`pip install -r requirements.txt`), installs frontend deps (`cd web && npm install`), copies `.env.example` → `.env` with prompts for API keys, seeds the Reddit DB, and runs initial DB migrations. Goal: `git clone && ./setup.sh && ./run.sh` and you're live. Also consider adding a `docker-compose.yml` for truly zero-config setup (Dockerfile already exists).
-- [ ] **"Watch Now" deep-link on TV cast page** — Add buttons on the Chromecast cast view that link directly to streaming service pages for the recommended title (e.g., Netflix title page). Assume the user has the sub; fall back to the show's page on that service.
+### PM-groomed release sequence (2026-05-07)
+
+1. ~~**Fix feedback capture before any tester push**~~ — **DONE (PR #2, merged 2026-05-12; verified 2026-07-01):** `POST /vote` + `GET /vote-stats` live in `api/routes.py`, SQLite `votes` table with UPSERT per `(request_id, session_id)`, contract matches the web UI, 8 endpoint tests.
+2. **Add basic abuse/cost protection before sharing the public URL** — Free WatchThis still pays for LLM calls. Outcome: Railway deployment has a simple per-session/IP cap with a friendly error state, not surprise Anthropic spend.
+3. **Run the 200+ voted-rec tester loop** — Only after vote persistence and rate limiting work. Outcome: 200 usable voted recommendations with enough metadata to diagnose recommendation quality.
+4. **Point iOS Release config at Railway for live testing** — Small unlock for native testing, not App Store launch. Outcome: a Release build uses `https://watchthis.up.railway.app` and can complete mood/roulette flows.
+
+### Explicitly deferred / killed
+
+- **Kill as scoped: "Watch Now" deep-link on TV cast page.** Prior decision says DashCast pages are not interactive; put deep-links on the phone result screen if we revive this.
+- **Defer App Store icon/launch artwork.** No App Store submission is in the active release sequence.
+- **Defer one-command setup.** Useful only if WatchThis becomes an open-source project; current goal is free/wabi release, not contributor onboarding.
+- **Defer eval automation, taste profiles, collaborative filtering, monetization, scheduled agents.** These require vote data first; no work before the 200-vote loop produces signal.
+- **Archive idea-only notes with no action:** ads concern, taste-profile lock-in, SQLite multi-replica concern, HTTPS redirect check unless ops finds a real redirect failure.
 
 ## Completed
 
@@ -58,7 +79,9 @@
 - **Signal enrichment**: OMDb + Watchmode + Reddit scraper → **Gemini Pro with search grounding** (real-time ratings, streaming, community signal in one call)
 - This eliminates Watchmode's 1,000 lifetime cap, OMDb's 1,000/day cap, and the Reddit scraper cron entirely
 
-## Future Improvements
+## Future Ideas
+
+> Forward-looking features / directions, organized by phase. Phase 2/3/4 are all gated on the 200-vote dataset (see "Get 200+ voted recs" — the linchpin); the 2026-05-12 Hermes-kanban audit parked the matching tasks to priority-1. Also parked there: the items under "Explicitly deferred / killed" above (Watch-Now deep-link → revivable on the phone result screen; App Store icon/artwork; one-command setup if it ever goes OSS). Strategy musings (ads = perverse incentives; taste profile = lock-in) live here too as notes, not tasks. The active near-term backlog lives in the kanban / Linear.
 
 ### Phase 2: Eval Suite
 - [ ] Build eval suite from accumulated good/bad vote pairs
@@ -96,4 +119,4 @@
 - [ ] **`.env` in project root has API keys** — Already in `.gitignore` but double-check before any public repo push
 
 ---
-*Last updated: 2026-03-29*
+*Last updated: 2026-07-03*
